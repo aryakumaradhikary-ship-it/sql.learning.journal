@@ -1,4 +1,4 @@
-## August 17, 2026 - SQLBolt Session
+## August 17, 2026 - SQLBolt Session 1 - Morning 
 
 Practiced Lesson 1 --> Queries 
 
@@ -23,6 +23,46 @@ Example Query:
 
         Find all the information about each film:
         SELECT * FROM movies;
+
+## August 17, 2026 - SQLBolt Session 2 - Afternoon
+
+Practiced Lesson 2 - Queries with Constraints
+
+Notes: 
+- Use WHERE clause to filter certain results from being returned
+- Syntax:
+	- SELECT column,...
+	- FROM mytable
+	- WHERE condition
+		- AND/OR another_condition
+- different types of condition examples:
+	- col_name != 5
+	- col_name BETWEEN 1.5 AND 10.5
+	- col_name NOT BETWEEN 1 AND 10
+	- col_name IN (2,4,6)
+	- col_name NOT IN (1,3,5)
+
+- Example Query:
+  	
+	Find movies with a row ID of 6:
+	SELECT title
+	FROM movies
+	WHERE id = 6;
+
+	Find the movies released between 2000 and 2010
+	SELECT  title
+	FROM movies
+	WHERE year between 2000 AND 2010; 
+
+	Find the movies not released between 2000 and 2010
+	SELECT  title
+	FROM movies
+	WHERE year NOT BETWEEN 2000 AND 2010; 
+
+	Find the first 5 Pixar movies and their release year:
+	SELECT title, year
+	FROM movies
+	WHERE year <= 2003;
 
 
 
