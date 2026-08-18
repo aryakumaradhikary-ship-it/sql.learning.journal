@@ -254,6 +254,31 @@ Exercise: one table with buildings (building_name & capacity), other table with 
 
 ------------
 
+SQL Lesson 8: NULLs
+
+- alternative vals for NULL is 0 for numerical data and empty strings for text data
+- NULL vals are appropriate to leave as be if it will skew analysis
+- you can test column if there are NULL vals --> use IS/IS NOT NULL
+
+	Exercise: same tables as the previous lesson
+	
+	Find the name & role of all employees that haven't been assigned a building:
+	SELECT name, role, building
+	FROM employees
+	WHERE building IS NULL; 
+
+	Find the names of buildings that hold no employees:
+	SELECT DISTINCT building_name
+	FROM buildings
+	LEFT JOIN employees
+	ON building_name = building
+	WHERE role IS NULL;
+	--> left join keeps all the buildings
+	--> if building has no employees, role will come back as NULL
+
+
+
+
 
 
 
