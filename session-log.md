@@ -494,8 +494,26 @@ Exercise:
 	); 
 
 
+------------
+
+SQL Lesson 17 - Altering Tables
+
+- ALTER TABLE clause lets you alter the table (pretty self explanatory!)
+- you can drop columns but sometimes you may have to create a new table altogether
+- to rename a table, you just use RENAME TO
 
 
+Exercise: 
+	Add a column called aspect_ratio with a float data type to restore the aspect ration each movie was released in: 	
+	ALTER TABLE movies
+	ADD column aspect_ratio FLOAT
+	DEFAULT 0; 
+
+	Add column named language w/ text data type to store language the movie was released in. Default language should be English: 
+
+	ALTER TABLE movies
+	ADD column language TEXT
+	DEFAULT English;
 
 
 
