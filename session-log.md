@@ -260,7 +260,7 @@ SQL Lesson 8: NULLs
 - NULL vals are appropriate to leave as be if it will skew analysis
 - you can test column if there are NULL vals --> use IS/IS NOT NULL
 
-	Exercise: same tables as the previous lesson
+Exercise: same tables as the previous lesson
 	
 	Find the name & role of all employees that haven't been assigned a building:
 	SELECT name, role, building
@@ -279,8 +279,39 @@ SQL Lesson 8: NULLs
 
 
 
+------------
+
+SQL Lesson 9 - Queries w/ Expressions
+
+- expressions are for complex logic on columns in queries
+- use mathematical + string functions to alter values in the query
+- when you use expressions, you should have a descriptive alias ~ AS
 
 
+Exercise: one table w/ id, title, director, year, length_minutes; other table w/ movie_id, rating, domestic_sales, international_sales
+
+	List all movies and their combined sales in millions of dollars
+	SELECT title, (domestic_sales + international_sales) / 1000000 AS gross_sales_millions
+	FROM movies
+	JOIN boxoffice
+	ON movies.id = boxoffice.movie_id;
+	--> we add + divide and create a new gross_sales_millions column to display on our new query
+	--> we join w/ boxoffice to display title + new column we just made
+
+
+	List all the movies and their ratings in percent:
+	SELECT title, rating * 10 AS ratings_percent
+	FROM movies
+	JOIN boxoffice
+	ON movies.id = boxoffice.movie_id;
+	--> multiply by 10 to convert to percentages, similar steps as the previous problem
+
+	List all the movies that were released on even number years:
+	SELECT title, year
+	FROM movies
+	JOIN boxoffice
+	ON movies.id = boxoffice.movie_id
+	WHERE year % 2 != 1; 
 
 
 
