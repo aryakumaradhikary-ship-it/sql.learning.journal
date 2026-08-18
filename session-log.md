@@ -313,6 +313,39 @@ Exercise: one table w/ id, title, director, year, length_minutes; other table w/
 	ON movies.id = boxoffice.movie_id
 	WHERE year % 2 != 1; 
 
+------------
+
+SQL Lesson 10 - Queries w/ Aggregates (Part 1)
+
+- aggregate functions summarizes information
+- common aggregate functions:
+	- COUNT: counts # of rows in group if no column name is specified (), otherwise will count the # of rows in the group that has no non-NULL values in specified column
+	- MIN(column): returns the smallest numerical val in specified column for all rows in group
+	- MAX(column): returns the largest numerical val in a specified column for all rows in the group
+	- AVG(column): returns the average numerical val in a specified column for all rows in the group
+	- SUM(column): returns the sum of all numerical values in a specified column for all rows in the group.
+
+- you can also use the GROUP BY clause to group together rows with the same col vals
+
+
+Exercise: one table with role, name, building, years_employed
+
+	Find the longest time that an employee has been at the studio:
+	SELECT name, MAX(years_employed)
+	FROM employees; 
+
+	For each role, find the average number of years employed by employees in that role:
+	SELECT role, AVG(years_employed)
+	FROM employees
+	GROUP BY role; 
+
+	Find the total number of employee years worked in each building:
+	SELECT building, sum(years_employed)
+	FROM employees
+	GROUP BY building; 
+
+
+	
 
 
 
