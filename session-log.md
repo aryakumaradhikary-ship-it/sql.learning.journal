@@ -417,10 +417,30 @@ Exercise: one table w/id, title, director, year, length_minutes; other w/ movie_
 	INSERT INTO boxoffice
 	VALUES (4, 8.7, 340000000, 270000000); 
 	
+
+------------
+
+SQL Lesson 14 - Updating Rows
+
+- UPDATE statement to update rows; requires same data types in each column 
+- always write the constraint first and test with a SELECT query to check that the correct rows are being updated
+
+Exercise: 
 	
- 
+	The director for a Bug's Life is incorrect, it was actually directed by John Lasseter:
+	UPDATE movies
+	SET director = "John Lasseter"
+	WHERE title = "A Bug's Life";
 
-
+	The year that Toy Story 2 came out is incorrect, it was actually released in 1999:
+	UPDATE movies
+	SET year = 1999
+	WHERE title = "Toy Story 2";
+	
+	Both the title and director for Toy Story 8 is incorrect. Title should be Toy Story 3 & it was directed by Lee Unkrich:
+	UPDATE movies
+	SET title = "Toy Story 3", director = "Lee Unkrich"
+	WHERE title = "Toy Story 8"
 
 
 
