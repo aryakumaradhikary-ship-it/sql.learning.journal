@@ -100,5 +100,53 @@ Lesson 3 - Queries with Constraints (cont)
 	WHERE title LIKE “WALL-_”;
 
 
+## August 18, 2026 - SQL Session 4
+
+Lesson 4 - Filtering and Sorting Queries
+
+- use DISTINCT to discard duplicate rows
+- syntax/how it looks:
+	SELECT DISTINCT column, another_column,...
+	FROM mytable
+	WHERE condition(s); 
+- ORDER BY clause lets you order based on ascending/descending:
+	SELECT column, another_column
+	FROM mytable
+	WHERE condition(s)
+	ORDER BY column ASC/DESC;
+- LIMIT clause helps with reducing numbers of rows to return + OFFSET specifics where to begin counting the rows:
+	SELECT column, another column,...
+	FROM mytable
+	WHERE condition(s)
+	ORDER by column ASC/DESC
+	LIMIT num_limit OFFSET num_offset;
+
+- Exercise:
+
+	List all directors of pixar movies (alphabetically) without duplicates
+	SELECT DISTINCT director 
+	FROM movies
+	ORDER BY director ASC;
+
+	List the last 4 Pixar movies released (ordered from most recent to least)
+	SELECT title, year
+	FROM movies
+	ORDER BY year DESC
+	LIMIT 4;
+
+	List the first five pixar movies sorted alphabetically
+	SELECT title
+	FROM movies
+	ORDER BY title ASC
+	LIMIT 5; 
+
+	List the next 5 pixar movies sorted alphabetically
+	SELECT title 
+	FROM movies
+	ORDER BY title ASC
+	LIMIT 5 OFFSET 5;
+
+
+
 
 
