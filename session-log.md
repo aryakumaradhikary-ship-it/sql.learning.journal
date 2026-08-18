@@ -371,9 +371,32 @@ Exercise: table w/ role, name, building, years_employed
 	FROM employees
 	WHERE role = "Engineer"; 
 
+------------
+
+SQL Lesson 12 - Order of Execution of a Query 
+
+- order: SELECT, FROM, JOIN, ON, WHERE, GROUP BY, HAVING, ORDER BY (ASC/DESC), LIMIT, OFFSET; 
+- group by should only be used when you have aggregate functions in your query
 
 
+Exercise: one table w/ id, title, director, year, length_minutes; other w/ movie_id, rating, domestic_sales, international_sales
 
+	Find the number of movies each director has directed:
+	SELECT director, COUNT(id) AS num_movies
+	FROM movies
+	GROUP BY director; 
+	
+	Find the total domestic + international sales that can be attributed to each director
+	SELECT director, SUM(domestic_sales + international_sales) AS all_movie_sales
+	FROM movies
+	INNER JOIN boxoffice
+	ON movies.id = boxoffice.movie_id
+	GROUP BY director; 
+	--> inner join is connecting the movie table with the box office table via movie ids
+	--> by doing so, we can create a total sales album per movie and then sum!
+
+
+	
 
 
 
