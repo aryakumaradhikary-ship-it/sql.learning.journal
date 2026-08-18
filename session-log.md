@@ -1,6 +1,6 @@
-## August 17, 2026 - SQLBolt Session 1 - Morning 
+## August 17, 2026 
 
-Practiced Lesson 1 --> Queries 
+SQL Bolt - Practiced Lesson 1 --> Queries 
 
 Notes: 
 - To retrieve data from SQL database, we need to write ‘SELECT’ statements → called queries
@@ -24,9 +24,9 @@ Notes:
         Find all the information about each film:
         SELECT * FROM movies;
 
-## August 17, 2026 - SQLBolt Session 2 - Afternoon
+---------
 
-Practiced Lesson 2 - Queries with Constraints
+SQL Lesson 2 - Queries with Constraints
 
 Notes: 
 - Use WHERE clause to filter certain results from being returned
@@ -64,9 +64,11 @@ Notes:
 	FROM movies
 	WHERE year <= 2003;
 
-## August 18, 2026 - SQL Session 3
+######################################
 
-Lesson 3 - Queries with Constraints (cont)
+## August 18, 2026
+
+SQL Lesson 3 - Queries with Constraints (cont)
 
 - ways to filter columns based on column name:
 	- col_name = “abc”
@@ -100,9 +102,9 @@ Lesson 3 - Queries with Constraints (cont)
 	WHERE title LIKE “WALL-_”;
 
 
-## August 18, 2026 - SQL Session 4
+------------
 
-Lesson 4 - Filtering and Sorting Queries
+SQL Lesson 4 - Filtering and Sorting Queries
 
 - use DISTINCT to discard duplicate rows
 - syntax/how it looks:
@@ -146,7 +148,76 @@ Lesson 4 - Filtering and Sorting Queries
 	ORDER BY title ASC
 	LIMIT 5 OFFSET 5;
 
+------------
 
+SQL Lesson 5 - Final Review
+
+	List all the Canadian cities and their population:
+	SELECT city, country, population
+	FROM north_american_cities
+	WHERE country LIKE “CANADA”;
+
+
+	Order all the cities in the US by their latitude from North to South:
+	SELECT city, country, latitude
+	FROM north_american_cities
+	WHERE country LIKE “UNITED STATES”
+	ORDER BY latitude DESC;
+
+	List all the cities west of Chicago, order from west to East
+	SELECT city, longitude
+	FROM north_american_cities
+	WHERE longitude < -87.629798
+	ORDER BY longitude ASC;
+
+	List the two largest cities in Mexico by population 
+	SELECT city, population 
+	FROM north_american_cities
+	WHERE country LIKE “Mexico”
+	ORDER BY population DESC
+	LIMIT 2;
+
+	List the 3rd and fourth largest cities by population inn the US
+	SELECT city, population FROM north_american_cities
+	WHERE country LIKE "United States"
+	ORDER BY population DESC
+	LIMIT 2 OFFSET 2;
+
+
+------------
+
+SQL Lesson 6: Multi-Table Queries with JOINs
+
+- database normalization: minimizes duplicate data in a table + data can grow independently --> queries get complex + more risk of performance issues
+- primary key: when tables share info about one entity, they need to have primary key that identifies the entity uniquely across the entire database --> usually is some type of integer 
+- use the JOIN clause in a query to combine row data into different tables 
+- INNER JOIN lets you match the rows from the first and second table that have the same key to create a row with the combined rows --> when writing it out, INNER JOIN is just JOIN
+
+
+
+Exercise: two separate tables, one w/ id, title, director, year, length_minutes; other w/ movie_id, rating, domestic_sales, international_sales
+	
+	Find the domestic and international sales for each movie
+	SELECT title, domestic_sales, international_sales
+	FROM movies
+	JOIN boxoffice
+	ON movies.id = boxoffice.movie_id
+
+	Show sales numbers for each movie that did better internationally than domestically
+	SELECT title, domestic_sales, international_sales
+	FROM movies
+	JOIN boxoffice
+	ON movies.id = boxoffice.movie_id
+	WHERE international_sales > domestic_sales; 
+	
+	List all the movies by their rankings in descending order
+	SELECT title, ranking
+	FROM movies
+	JOIN boxoffice
+	ON movies.id = boxoffice.movie_id
+	ORDER BY rating DESC; 
+
+	
 
 
 
