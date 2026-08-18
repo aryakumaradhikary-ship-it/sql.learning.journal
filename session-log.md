@@ -459,10 +459,39 @@ Exercise:
 
 	Andrew Stanton has left the studio, remove all movies directed by him:
 	DELETE from movies
-	WHERE director = "Andrew Stanton"
+	WHERE director = "Andrew Stanton"; 
 
 
+------------
 
+SQL Lesson 16 - Creating Tables
+
+- to create a new database, use the CREATE TABLE statement
+- if a table with the same name already exists, then there may be an error --> use IF NOT EXISTS clause to bypass this
+- table data types:
+	- int
+	- boolean
+	- float/double/real
+	- character, varchar, text
+	- date, datetime
+	- blob (where binary data can be stored)
+
+- constraints:
+	- primary key: vals in column are unique 
+	- auto increment: for int vals, this vals s automatically filled in and incremented w/ each row insertion
+	- unique: all vals have to be unique --> doesn't need to be a key for a row in the table
+	- not null: inserted val can't be null
+	- check: complex expression to test whether vals are valid
+	- foreign key: checks whether val in one column matches another column
+
+Exercise: 
+	Create a new table named Database with the following columns: Name, a string (text) describing the name of the database; Version, a number (floating point) of the latest version of this database; download_count, an integer count of the number of times this database was downloaded
+
+	CREATE TABLE database (
+	name STRING, 
+	version FLOAT,
+	download_count INTEGER
+	); 
 
 
 
