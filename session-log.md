@@ -13,7 +13,7 @@ Notes:
        SELECT *
        FROM mytable; 
 
-Example Query: 
+- Exercise: 
 
         Find the director of each film:
         SELECT director FROM movies; 
@@ -42,7 +42,7 @@ Notes:
 	- col_name IN (2,4,6)
 	- col_name NOT IN (1,3,5)
 
-- Example Query:
+- Exercise:
   	
 	Find movies with a row ID of 6:
 	SELECT title
@@ -63,6 +63,42 @@ Notes:
 	SELECT title, year
 	FROM movies
 	WHERE year <= 2003;
+
+## August 18, 2026 - SQL Session 3
+
+Lesson 3 - Queries with Constraints (cont)
+
+- ways to filter columns based on column name:
+	- col_name = “abc”
+	- col_name != “abcd”
+	- col_name LIKE “ABC” (case insensitive!)
+	- col_name NOT LIKE “ABCD”
+	- col_name LIKE “%AT%” → used anywhere in a string to match a sequence of zero or more 	characters → this code would match with “AT”, “ATTIC”, “CAT”, “BATS”
+	- col_name LIKE “AN_” → matches with “AND” but not “AN”
+	- col_name IN (“A”, “B”, “C”) → string exists in a list
+	- col_name NOT IN (“D”, “E”, “F”) → string does not exist in a list
+
+- Exercise:
+	
+	Find all the toy story movies:
+	SELECT title
+	FROM movies
+	WHERE title LIKE “%TOY STORY%”; 
+
+	Find all the movies directed by John Lasseter:
+	SELECT title
+	FROM movies
+	WHERE director LIKE “JOHN LASSETER”
+
+	Find all the movies  (and director) not directed by John Lasseter:
+	SELECT title, director
+	FROM movies
+	WHERE director NOT LIKE “JOHN LASSESTER”
+
+	Find all the WALL-* movies:
+	SELECT * FROM movies
+	WHERE title LIKE “WALL-_”;
+
 
 
 
