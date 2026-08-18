@@ -345,7 +345,32 @@ Exercise: one table with role, name, building, years_employed
 	GROUP BY building; 
 
 
-	
+------------
+
+SQL Lesson 11 - Queries w/ Aggregates (Part 2)	
+
+- GROUP BY is executed after WHERE clause
+- HAVING clause allows us to filter rows
+- order is: select, from, where, group by, rows
+
+
+Exercise: table w/ role, name, building, years_employed
+
+	Find the # of artists in the studio (without using a HAVING clause):
+	SELECT role, COUNT(*) AS num_of_artists
+	FROM employees
+	WHERE role = "Artist"; 
+
+	Find the number of employees of each role in the studio:
+	SELECT role, COUNT(*)
+	FROM employees,
+	GROUP BY role; 
+
+	Find the total number of years employed by all engineers:
+	SELECT role, sum(years_employed)
+	FROM employees
+	WHERE role = "Engineer"; 
+
 
 
 
