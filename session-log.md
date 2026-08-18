@@ -125,24 +125,24 @@ SQL Lesson 4 - Filtering and Sorting Queries
 
 - Exercise:
 
-	List all directors of pixar movies (alphabetically) without duplicates
+	List all directors of pixar movies (alphabetically) without duplicates:
 	SELECT DISTINCT director 
 	FROM movies
 	ORDER BY director ASC;
 
-	List the last 4 Pixar movies released (ordered from most recent to least)
+	List the last 4 Pixar movies released (ordered from most recent to least):
 	SELECT title, year
 	FROM movies
 	ORDER BY year DESC
 	LIMIT 4;
 
-	List the first five pixar movies sorted alphabetically
+	List the first five pixar movies sorted alphabetically:
 	SELECT title
 	FROM movies
 	ORDER BY title ASC
 	LIMIT 5; 
 
-	List the next 5 pixar movies sorted alphabetically
+	List the next 5 pixar movies sorted alphabetically:
 	SELECT title 
 	FROM movies
 	ORDER BY title ASC
@@ -164,20 +164,20 @@ SQL Lesson 5 - Final Review
 	WHERE country LIKE “UNITED STATES”
 	ORDER BY latitude DESC;
 
-	List all the cities west of Chicago, order from west to East
+	List all the cities west of Chicago, order from west to East:
 	SELECT city, longitude
 	FROM north_american_cities
 	WHERE longitude < -87.629798
 	ORDER BY longitude ASC;
 
-	List the two largest cities in Mexico by population 
+	List the two largest cities in Mexico by population:
 	SELECT city, population 
 	FROM north_american_cities
 	WHERE country LIKE “Mexico”
 	ORDER BY population DESC
 	LIMIT 2;
 
-	List the 3rd and fourth largest cities by population inn the US
+	List the 3rd and fourth largest cities by population in the US:
 	SELECT city, population FROM north_american_cities
 	WHERE country LIKE "United States"
 	ORDER BY population DESC
@@ -197,20 +197,20 @@ SQL Lesson 6: Multi-Table Queries with JOINs
 
 Exercise: two separate tables, one w/ id, title, director, year, length_minutes; other w/ movie_id, rating, domestic_sales, international_sales
 	
-	Find the domestic and international sales for each movie
+	Find the domestic and international sales for each movie:
 	SELECT title, domestic_sales, international_sales
 	FROM movies
 	JOIN boxoffice
 	ON movies.id = boxoffice.movie_id
 
-	Show sales numbers for each movie that did better internationally than domestically
+	Show sales numbers for each movie that did better internationally than domestically:
 	SELECT title, domestic_sales, international_sales
 	FROM movies
 	JOIN boxoffice
 	ON movies.id = boxoffice.movie_id
 	WHERE international_sales > domestic_sales; 
 	
-	List all the movies by their rankings in descending order
+	List all the movies by their rankings in descending order:
 	SELECT title, ranking
 	FROM movies
 	JOIN boxoffice
@@ -218,6 +218,52 @@ Exercise: two separate tables, one w/ id, title, director, year, length_minutes;
 	ORDER BY rating DESC; 
 
 	
+
+------------
+
+SQL Lesson 7: OUTER JOINs
+
+- if tables have asymmetric data, use LEFT JOIN, RIGHT JOIN, or FULL JOIN
+- LEFT JOIN includes rows from A regardless if matching row in B --> for joining table A to table B
+- RIGHT JOIN includes rows from B regardless if matching row in A
+- FULL JOIN, rows from both tables are kept, regardless of corresponding matching table
+
+Exercise: one table with buildings (building_name & capacity), other table with (role, name, building, & years_employed)
+
+	Find the list of all building that have employees:
+	SELECT DISTINCT building
+	FROM employees
+
+	Find the list of all buildings and their capacity:
+	SELECT building_name, capacity
+	FROM buildings; 
+
+	List all the building and the distinct employee roles in each building (including empty buildings)
+
+	SELECT DISTINCT building_name, role
+	FROM buildings
+	LEFT JOIN employees 
+	ON building_name = building
+
+
+	--> left join is keeping everything from the building table, whether or not it finds a match in employees
+        --> if building has employees, it matches building name to the building and then will pull the role
+        --> if the building has no employees, the role column will simply be null 
+
+
+
+------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
