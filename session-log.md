@@ -440,9 +440,26 @@ Exercise:
 	Both the title and director for Toy Story 8 is incorrect. Title should be Toy Story 3 & it was directed by Lee Unkrich:
 	UPDATE movies
 	SET title = "Toy Story 3", director = "Lee Unkrich"
-	WHERE title = "Toy Story 8"
+	WHERE title = "Toy Story 8";
 
 
+------------
+
+SQL Lesson 15 - Deleting Rows
+
+- use the DELETE statement to describe the table to act on, and the WEHRE clause to decide which row
+- if you don't use the WHERE clause, all rows will be deleted!
+
+
+Exercise:
+
+	Database is getting too big. Remove all movies released before 2005:
+	DELETE from movies
+	WHERE year < 2005; 
+
+	Andrew Stanton has left the studio, remove all movies directed by him:
+	DELETE from movies
+	WHERE director = "Andrew Stanton"
 
 
 
