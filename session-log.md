@@ -516,7 +516,21 @@ Exercise:
 	DEFAULT English;
 
 
+------------
 
+SQL Lesson 18 - Dropping Tables
+
+- if you want to remove the entire table schema from the database, use DROP TABLE IF EXISTS
+
+
+Exercise: one table w/ id, title, director, year, length_minutes; other w/ movie_id, rating, domestic_sales, international_sales
+
+	Clean up by removing the movies table:
+	DROP TABLE IF EXISTS movies; 
+
+	Drop BoxOffice table as well: 
+	DROP TABLE IF EXISTS boxoffice; 
+	
 
 
 
