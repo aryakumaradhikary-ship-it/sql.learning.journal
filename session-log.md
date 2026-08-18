@@ -396,7 +396,42 @@ Exercise: one table w/ id, title, director, year, length_minutes; other w/ movie
 	--> by doing so, we can create a total sales album per movie and then sum!
 
 
+------------
+
+SQL Lesson 13 - Inserting Rows
+
+- database schema: what described the structure of each table & database types that each column can contain
+- to insert data, we need INSERT statement --> ex: INSERT INTO mutable
+						   VALUES(val_or_exp),...
+- to add column: INSERT INTO boxoffice
+		 (movie_id, rating, sales)
+		 VALUES (2, 8.0, 8900000)
+
+Exercise: one table w/id, title, director, year, length_minutes; other w/ movie_id, rating, domestic_sales, international_sales
+
+	Add the studio's new production, Toy Story 4 w/ any director:
+	INSERT INTO movies 
+	VALUES(4, "Toy Story 4", "John Lasseter, 120); 
 	
+	Toy Story 4 has been released. It has a rating of 8.7, made 340M domestically, 270 internationally. Add this record to the BoxOfffice table:
+	INSERT INTO boxoffice
+	VALUES (4, 8.7, 340000000, 270000000); 
+	
+	
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
